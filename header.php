@@ -42,11 +42,11 @@ error_reporting(E_ALL | E_STRICT);
 	    <?php } ?>
 	</style>
 	<?php $this->header(); ?>
-<meta property="og:url" content="https://Website/">
-<meta property="og:type" content="blog">
-<meta property="og:title" content="Title">
-<meta property="og:description" content="Description">
-<meta property="og:image" content="Image">
+	<meta property="og:url" content="https://Website/">
+	<meta property="og:type" content="blog">
+	<meta property="og:title" content="Title">
+	<meta property="og:description" content="Description">
+	<meta property="og:image" content="Image">
 </head>
 <body>
     <?php 
