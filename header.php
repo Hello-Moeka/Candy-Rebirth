@@ -42,11 +42,29 @@ error_reporting(E_ALL | E_STRICT);
 	    <?php } ?>
 	</style>
 	<?php $this->header(); ?>
-	<meta property="og:url" content="https://Website/">
-	<meta property="og:type" content="blog">
-	<meta property="og:title" content="Title">
-	<meta property="og:description" content="Description">
-	<meta property="og:image" content="Image">
+<!-- 首页输出 感谢https://nekosc.com/share/ogp.html -->
+<?php if($this->is('index')): ?>
+<meta property="og:url" content="https://nekosc.com/"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="零件's Blog"/>
+<meta property="og:image" content="https://nekosc.com/usr/themes/next/images/avatar.jpg"/>
+<meta property="og:author" content="零件"/>
+<meta property="og:site_name" content="零件's Blog"/>
+<meta property="og:description" content="Tech Oakus Save The World"/>
+<meta property="og:locale:alternate" content="zh_CN"/>
+<?php endif; ?>
+
+<!-- 文章和独立页面输出 感谢https://nekosc.com/share/ogp.html -->
+<?php if($this->is('post')||$this->is('page')): ?>
+<meta property="og:url" content="<?php $this->permalink(); ?>"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="<?php $this->title(); ?>"/>
+<meta property="og:image" content="https://nekosc.com/usr/themes/next/images/avatar.jpg"/>
+<meta property="og:author" content="<?php $this->author(); ?>"/>
+<meta property="og:site_name" content="<?php $this->options->title(); ?>"/>
+<meta property="og:description" content="<?php $this->description(); ?>"/>
+<meta property="og:locale:alternate" content="zh_CN"/>
+<?php endif; ?>
 </head>
 <body>
     <?php 
