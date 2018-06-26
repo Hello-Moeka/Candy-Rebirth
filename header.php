@@ -59,7 +59,7 @@ error_reporting(E_ALL | E_STRICT);
 <meta property="og:url" content="<?php $this->permalink(); ?>"/>
 <meta property="og:type" content="blog"/>
 <meta property="og:title" content="<?php $this->title(); ?>"/>
-<meta property="og:image" content="https://nekosc.com/usr/themes/next/images/avatar.jpg"/>
+<meta property="og:image" content="<?php showThumbnail($this); ?>"/>
 <meta property="og:author" content="<?php $this->author(); ?>"/>
 <meta property="og:site_name" content="<?php $this->options->title(); ?>"/>
 <meta property="og:description" content="<?php $this->description(); ?>"/>
