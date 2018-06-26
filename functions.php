@@ -200,4 +200,19 @@ function time_elapsed_string($datetime, $full = false) {
     if (!$full) $string = array_slice($string, 0, 1);
     return $string ? implode(', ', $string) . '' : '';
 }
+function showThumbnail($widget)
+{ 
+    //当文章无图片时的默认缩略图
+    $random = $widget->widget('Widget_Options')->themeUrl . '/images/avatar.jpg';
+    $attach = $widget->attachments(1)->attachment;
+    $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i'; 
+
+if (preg_match_all($pattern, $widget->content, $thumbUrl)) {
+         echo $thumbUrl[1][0];
+    } else     if ($attach->isImage) {
+      echo $attach->url; 
+    } else {
+        echo $random;
+    }
+}
 ?> 
