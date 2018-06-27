@@ -42,19 +42,23 @@ error_reporting(E_ALL | E_STRICT);
 	    <?php } ?>
 	</style>
 	<?php $this->header(); ?>
-<!-- 首页输出 感谢https://nekosc.com/share/ogp.html -->
+<!-- 首页输出 -->
 <?php if($this->is('index')): ?>
-<meta property="og:url" content="https://nekosc.com/"/>
+<meta property="og:url" content="https://moeclue.com/"/>
 <meta property="og:type" content="blog"/>
-<meta property="og:title" content="零件's Blog"/>
-<meta property="og:image" content="https://nekosc.com/usr/themes/next/images/avatar.jpg"/>
-<meta property="og:author" content="零件"/>
-<meta property="og:site_name" content="零件's Blog"/>
-<meta property="og:description" content="Tech Oakus Save The World"/>
+<meta property="og:title" content="MoeClue~"/>
+ <?php if ($this->options->logoURL){ ?>
+        <meta property="og:image" content="<?php $this->options->logoURL(); ?>" />
+    <?php }else{ ?> 
+        <meta property="og:image" content="<?php echo gravatarUrl($this, 100); ?>" />
+<?php      } ?>
+<meta property="og:author" content="Moeka"/>
+<meta property="og:site_name" content="MoeClue~"/>
+<meta property="og:description" content="Welcome to Moeka's Blog"/>
 <meta property="og:locale:alternate" content="zh_CN"/>
 <?php endif; ?>
 
-<!-- 文章和独立页面输出 感谢https://nekosc.com/share/ogp.html -->
+<!-- 文章和独立页面输出 -->
 <?php if($this->is('post')||$this->is('page')): ?>
 <meta property="og:url" content="<?php $this->permalink(); ?>"/>
 <meta property="og:type" content="blog"/>
