@@ -202,17 +202,22 @@ function time_elapsed_string($datetime, $full = false) {
 }
 function showThumbnail($widget)
 { 
-    //当文章无图片时的默认缩略图
-    $random = $widget->widget('Widget_Options')->themeUrl . '/images/avatar.jpg';
+    $random = gravatarUrl($widget);
     $attach = $widget->attachments(1)->attachment;
     $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i'; 
-
-if (preg_match_all($pattern, $widget->content, $thumbUrl)) {
-         echo $thumbUrl[1][0];
-    } else     if ($attach->isImage) {
-      echo $attach->url; 
+    if ($widget->fields->previewImage && $widget->fields->previewImage!=="") {
+        $widget->fields->previewImage();
+    } else if (preg_match_all($pattern, $widget->content, $thumbUrl)) {
+        echo $thumbUrl[1][0];
+    } else if (@$attach->isImage) {
+        echo $attach->url; 
     } else {
         echo $random;
-    }
+     }
+}
+function gravatarUrl($widget, $size = 40, $rating = 'X', $default = NULL, $class = NULL)
+{
+    $url = Typecho_Common::gravatarUrl($widget->author->mail, $size, $rating, $default, $widget->request->isSecure());
+    return $url;
 }
 ?> 
